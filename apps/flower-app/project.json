@@ -1,0 +1,102 @@
+{
+  "name": "flower-app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/flower-app/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/flower-app",
+        "index": "apps/flower-app/src/index.html",
+        "browser": "apps/flower-app/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/flower-app/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/flower-app/public"
+          }
+        ],
+        "styles": [
+          "apps/flower-app/src/styles.scss",
+          "node_modules/primeflex/primeflex.css",
+          "node_modules/primeflex/themes/primeone-light.css",
+          "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+        ],
+        "scripts": [],
+        "server": "apps/flower-app/src/main.server.ts",
+        "ssr": {
+          "entry": "apps/flower-app/src/server.ts"
+        },
+        "outputMode": "server"
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kb",
+              "maximumError": "8kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "continuous": true,
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "flower-app:build:production"
+        },
+        "development": {
+          "buildTarget": "flower-app:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "flower-app:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/flower-app/jest.config.ts"
+      }
+    },
+    "serve-static": {
+      "continuous": true,
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "flower-app:build",
+        "port": 4200,
+        "staticFilePath": "dist/apps/flower-app/browser",
+        "spa": true
+      }
+    }
+  }
+}
