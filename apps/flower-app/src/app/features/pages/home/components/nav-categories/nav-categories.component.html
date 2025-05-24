@@ -1,0 +1,30 @@
+<div class="nav__categories m-auto mt-4 lg:mt-0">
+  <div>
+    <ul
+      class="category__list list-none flex column-gap-3 sm:column-gap-8 p-0 align-content-center"
+    >
+      @for (category of categoryList().slice(0, 4); track $index) {
+      <li
+        [class.active]="activeCategoryId === category._id"
+        (click)="handleCategoryClick(category._id)"
+      >
+        {{ category.name }}
+      </li>
+      } @if (categoryList().length > 4) {
+      <li class="dropdown">
+        <span class="dropdown-toggle"> More ▼ </span>
+        <ul class="dropdown-menu">
+          @for (category of categoryList().slice(4); track $index) {
+          <li
+            [class.active]="activeCategoryId === category._id"
+            (click)="handleCategoryClick(category._id)"
+          >
+            {{ category.name }}
+          </li>
+          }
+        </ul>
+      </li>
+      }
+    </ul>
+  </div>
+</div>
