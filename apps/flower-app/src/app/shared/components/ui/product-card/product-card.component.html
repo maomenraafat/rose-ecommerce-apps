@@ -1,0 +1,27 @@
+<div class="card__item">
+  <div class="card__img">
+    <img [src]="product.imgCover" class="w-full" alt="" />
+    <div
+      class="overlay gap-4 text-white text-2xl flex justify-content-center align-items-center"
+    >
+      <span><i class="fa-regular fa-eye"></i> </span>
+      <span> <i class="fa-regular fa-heart"></i></span>
+    </div>
+  </div>
+  <div class="card__desc flex justify-content-between align-content-center p-2">
+    <div class="card__text">
+      <p class="mt-0">{{ product.title.split(' ').splice(0, 3).join(' ') }}</p>
+      <div class="icon__stars">
+        @for (star of [1,2,3,4,5]; track star) {
+        <i [class]="getStarClass(star, product.rateAvg)"></i>
+        }
+      </div>
+      <span class="block m-1">${{ product.price }}</span>
+    </div>
+    <div
+      class="card__icon flex justify-content-center align-items-center border-circle"
+    >
+      <i class="fa-solid fa-bag-shopping"></i>
+    </div>
+  </div>
+</div>
