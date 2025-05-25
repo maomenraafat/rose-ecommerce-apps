@@ -1,13 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
-
+@use './style/functions-mixins' as funs;
+@use './style/variables' as vars;
+@use './style/break-boints' as bp;
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-
-:root {
-  --main-color: #f82ba9;
-  --text-color: #160e4b;
-  --Heliotrope-color: #8c52ff;
-  --Remy-color: #feedf7;
-  --salte-color: #757f95;
-  --Roboto-font: 'Roboto', sans-serif;
-  --Inter-font: 'Inter', sans-serif;
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+body {
+  margin: 0;
+  box-sizing: border-box;
+}
+.owl-theme .owl-dots {
+  position: absolute;
+  bottom: 8%;
+  right: 50%;
+  transform: translateX(50%);
+}
+.owl-theme .owl-dots .owl-dot span {
+  transition: all 0.5s;
+  width: funs.pxToRem(7);
+  height: funs.pxToRem(7);
+  background-color: vars.$main-color !important;
+}
+.owl-theme .owl-dots .owl-dot.active span {
+  width: 19px;
+}
+@media only screen and (max-width: bp.$lg) {
+  .owl-theme .owl-dots {
+    display: none;
+  }
+}
+.object-fit-cover {
+  object-fit: cover;
+}
+.square-btn {
+  border-radius: 10px;
+  background-color: vars.$main-color;
+  border: none;
+  color: vars.$white;
+  padding: funs.pxToRem(9) funs.pxToRem(18);
+  width: funs.pxToRem(123);
+  height: funs.pxToRem(46);
+  cursor: pointer;
+  box-shadow: 0px 0px 37.28px 4.66px #0000000d;
+}
+.curvy-btn{
+  border-radius: 20px;
+  background-color: vars.$main-color;
+  border: none;
+  color: vars.$white;
+  padding: funs.pxToRem(9);
+  height: funs.pxToRem(35);
+  cursor: pointer;
 }
