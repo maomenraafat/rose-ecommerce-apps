@@ -1,0 +1,128 @@
+@use './../../../style/_variables.scss' as vars;
+@use './../../../style/functions-mixins' as funs;
+@use './../../../style/break-boints' as bp;
+owl-carousel-o {
+  position: relative;
+  width: 100%;
+}
+::ng-deep .owl-prev,
+::ng-deep .owl-next {
+  position: absolute;
+  bottom: 10%;
+  width: funs.pxToRem(41) !important;
+  height: funs.pxToRem(41) !important;
+  line-height: funs.pxToRem(41);
+  color: #757f95 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: vars.$white !important;
+  border-radius: 50% !important;
+  font-size: 1rem !important;
+}
+::ng-deep .owl-prev {
+  // 41 => width of button
+  // 72 => margin right
+  // 12 => margin between buttons
+  right: funs.pxToRem(72 + 12 + 41);
+}
+
+::ng-deep .owl-next {
+  right: funs.pxToRem(72);
+}
+
+.slider-img {
+  height: funs.pxToRem(vars.$slider-height);
+  border-radius: 14px;
+}
+.content-in-slider {
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  margin: funs.pxToRem(40) auto funs.pxToRem(40) funs.pxToRem(46);
+  h3 {
+    color: vars.$main-color;
+    font-family: vars.$roboto-font;
+    letter-spacing: funs.pxToRem(4);
+    font-size: funs.pxToRem(21);
+  }
+  h1 {
+    color: vars.$text-color;
+    font-size: funs.pxToRem(45);
+    font-family: vars.$inter-font;
+    span {
+      color: vars.$main-color;
+    }
+  }
+  p {
+    line-height: funs.pxToRem(28);
+    font-size: funs.pxToRem(16);
+    color: vars.$text-color;
+    font-family: vars.$inter-font;
+  }
+}
+@media only screen and (max-width: bp.$lg) {
+  .content-in-slider {
+    position: absolute;
+    inset: 0;
+    bottom: 0;
+    width: 50%;
+    margin: funs.pxToRem(30) auto funs.pxToRem(30) funs.pxToRem(30);
+    h3 {
+      font-size: funs.pxToRem(20);
+    }
+    h1 {
+      color: vars.$text-color;
+      font-size: funs.pxToRem(30);
+      font-family: vars.$inter-font;
+      span {
+        color: vars.$main-color;
+      }
+    }
+    p {
+      line-height: funs.pxToRem(28);
+      font-size: funs.pxToRem(16);
+      color: vars.$text-color;
+      font-family: vars.$inter-font;
+    }
+  }
+}
+@media only screen and (max-width: 1205px) {
+  .content-in-slider {
+    width: 55%;
+  }
+}
+@media only screen and (max-width: bp.$md) {
+  .slider-img {
+    height: funs.pxToRem(vars.$slider-height-md);
+  }
+  ::ng-deep .owl-next {
+    right: funs.pxToRem(20);
+    bottom: 5%;
+  }
+  ::ng-deep .owl-prev {
+    right: funs.pxToRem(20 + 12 + 41);
+    bottom: 5%;
+  }
+  .content-in-slider {
+    width: 50%;
+    margin: funs.pxToRem(10) auto funs.pxToRem(10) funs.pxToRem(16);
+    h3 {
+      font-size: funs.pxToRem(16);
+      margin: funs.pxToRem(9) 0;
+    }
+    h1 {
+      color: vars.$text-color;
+      font-size: funs.pxToRem(20);
+    }
+    p {
+      line-height: initial;
+      font-size: funs.pxToRem(16);
+      color: vars.$salte-color;
+    }
+  }
+}
+@media only screen and (max-width: 400px) {
+  .content-in-slider {
+    width: 70%;
+  }
+}

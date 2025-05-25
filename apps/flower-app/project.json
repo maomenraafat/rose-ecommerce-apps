@@ -23,10 +23,10 @@
           }
         ],
         "styles": [
-          "apps/flower-app/src/styles.scss",
           "node_modules/primeflex/primeflex.css",
           "node_modules/primeflex/themes/primeone-light.css",
-          "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+          "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+          "apps/flower-app/src/styles.scss"
         ],
         "scripts": [],
         "server": "apps/flower-app/src/main.server.ts",
