@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OwlOptions, CarouselModule } from 'ngx-owl-carousel-o';
+import { SubmitBtnComponent } from '../../../shared/components/submit-btn.component';
 
 @Component({
   selector: 'app-special-gifts-slider',
-  imports: [CommonModule, CarouselModule],
+  imports: [CommonModule, CarouselModule, SubmitBtnComponent],
   templateUrl: './special-gifts-slider.component.html',
   styleUrl: './special-gifts-slider.component.scss',
 })

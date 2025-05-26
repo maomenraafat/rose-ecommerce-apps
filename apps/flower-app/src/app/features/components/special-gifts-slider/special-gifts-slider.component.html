@@ -1,0 +1,18 @@
+
+<owl-carousel-o [options]="customOptions">
+    @for (item of sliderStore; track $index) {
+    <ng-template carouselSlide>
+        <div>
+            <img [src]="'./images/'+item.imgPath"
+                class="slider-img object-fit-cover" [alt]="item.altText">
+            <div class="content-in-slider">
+                <h3>BEST GIFT SHOP</h3>
+                <h1>Choose Perfect <span>Gifts</span> From Us</h1>
+                <p>Culpa ducimus nesciunt aliquam non rerum esse recusandae
+                    omnis. Rerum optio dolores et.</p>
+                <app-submit-btn [icon]="true">Shop Now</app-submit-btn>
+            </div>
+        </div>
+    </ng-template>
+    }
+</owl-carousel-o>

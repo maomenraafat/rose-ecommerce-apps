@@ -32,18 +32,7 @@ body {
 .object-fit-cover {
   object-fit: cover;
 }
-.square-btn {
-  border-radius: 10px;
-  background-color: vars.$main-color;
-  border: none;
-  color: vars.$white;
-  padding: funs.pxToRem(9) funs.pxToRem(18);
-  width: funs.pxToRem(123);
-  height: funs.pxToRem(46);
-  cursor: pointer;
-  box-shadow: 0px 0px 37.28px 4.66px #0000000d;
-}
-.curvy-btn{
+.discover-now-btn{
   border-radius: 20px;
   background-color: vars.$main-color;
   border: none;

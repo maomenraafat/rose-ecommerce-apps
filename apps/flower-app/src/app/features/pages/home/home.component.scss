@@ -33,63 +33,11 @@
   .special-gifts-slider {
     height: 100%;
   }
-  .occasion-gifts-card {
-    height: funs.pxToRem(272);
-    position: relative;
-    border-radius: 14px;
-    overflow: hidden;
-    .occasion-gifts-content {
-      position: absolute;
-      width: 50%;
-      bottom: 50%;
-      right: funs.pxToRem(20);
-      text-align: right;
-      transform: translateY(50%);
-      font-family: vars.$inter-font;
-
-      h6{
-          font-size: funs.pxToRem(16);
-          color: vars.$main-color;
-          font-weight: 400;
-          margin: 0;
-      }
-      h4{
-          font-size: funs.pxToRem(20);
-          color: vars.$text-color;
-          margin: funs.pxToRem(14) 0;
-      }
-    }
-  }
-  .special-gifts-bannar{
+  .special-gifts-bannar {
     background-color: vars.$remy-color;
     border-radius: 20px;
     margin: funs.pxToRem(80) auto;
     padding: funs.pxToRem(40);
-    .bannar-card{
-      .icon-card{
-        background-color: vars.$main-color;
-        min-width: funs.pxToRem(65);
-        max-width: funs.pxToRem(65);
-        height: funs.pxToRem(65);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-      }
-      .content-card{
-        font-family: vars.$roboto-font;
-        h5{
-          color: vars.$text-color;
-          margin:0;
-          font-size: funs.pxToRem(20);
-        }
-        p{
-          color: vars.$salte-color;
-          margin:funs.pxToRem(5) 0 0 0;
-          font-size: funs.pxToRem(16);
-        }
-      }
-    }
   }
 }
 @media only screen and (max-width: bp.$md) {
@@ -102,19 +50,19 @@
       }
     }
     .occasion-gifts-card {
-    height: funs.pxToRem(272);
-    position: relative;
-    border-radius: 14px;
-    overflow: hidden;
-    .occasion-gifts-content {
-      position: absolute;
-      width: 80%;
-      bottom: 50%;
-      right: 50%;
-      margin: auto;
-      text-align: center;
-      transform: translateX(50%) translateY(50%);
+      height: funs.pxToRem(272);
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      .occasion-gifts-content {
+        position: absolute;
+        width: 80%;
+        bottom: 50%;
+        right: 50%;
+        margin: auto;
+        text-align: center;
+        transform: translateX(50%) translateY(50%);
+      }
     }
-  }
   }
 }
