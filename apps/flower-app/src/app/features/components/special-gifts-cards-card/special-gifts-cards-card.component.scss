@@ -1,0 +1,47 @@
+@use './../../../../style/_variables.scss' as vars;
+@use './../../../../style/functions-mixins' as funs;
+@use './../../../../style/break-boints' as bp;
+.occasion-gifts-card {
+  height: funs.pxToRem(272);
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  .occasion-gifts-content {
+    position: absolute;
+    width: 50%;
+    bottom: 50%;
+    right: funs.pxToRem(20);
+    text-align: right;
+    transform: translateY(50%);
+    font-family: vars.$inter-font;
+
+    h6 {
+      font-size: funs.pxToRem(16);
+      color: vars.$main-color;
+      font-weight: 400;
+      margin: 0;
+    }
+    h4 {
+      font-size: funs.pxToRem(20);
+      color: vars.$text-color;
+      margin: funs.pxToRem(14) 0;
+    }
+  }
+}
+@media only screen and (max-width: bp.$md) {
+  .occasion-gifts-card {
+    height: funs.pxToRem(272);
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    .occasion-gifts-content {
+      position: absolute;
+      width: 80%;
+      bottom: 50%;
+      right: 50%;
+      margin: auto;
+      text-align: center;
+      transform: translateX(50%) translateY(50%);
+    }
+  }
+}
