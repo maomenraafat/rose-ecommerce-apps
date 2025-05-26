@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
-import { ProductApiData, ProductApiRes } from '../../shared/interfaces/product-api-data';
+import {
+  ProductApiData,
+  ProductApiRes,
+} from '../../shared/interfaces/product-api-data';
+import { ErrorApiData } from '../../shared/interfaces/error-api-data';
 
 @Injectable({
   providedIn: 'root',
@@ -14,10 +18,10 @@ export class ProductAdaptorService {
     };
   }
 
-  adaptError(data: any): any {
+  adaptError(data: ErrorApiData): ErrorApiData {
     return {
-      message: data.error.message,
-      code: data.error.code,
+      message: data.message,
+      error: data.error,
     };
   }
 }

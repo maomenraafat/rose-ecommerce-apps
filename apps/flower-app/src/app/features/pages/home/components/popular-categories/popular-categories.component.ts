@@ -3,14 +3,14 @@ import { CommonModule } from '@angular/common';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CategoryService } from 'apps/flower-app/src/app/shared/services/category/category.service';
-import { LoadingSpinnerComponent } from "../../../../../shared/components/ui/loading-spinner.component";
+import { LoadingSpinnerComponent } from '../../../../../shared/components/ui/loading-spinner.component';
 @Component({
   selector: 'app-popular-categories',
   imports: [CommonModule, CarouselModule, LoadingSpinnerComponent],
   templateUrl: './popular-categories.component.html',
   styleUrl: './popular-categories.component.scss',
 })
-export class PopularCategoriesComponent implements OnInit {
+export class PopularCategoriesComponent {
   private _categoryService = inject(CategoryService);
   categoryList = this._categoryService.categoryList;
   isLoading = this._categoryService.isLoadingCategory;
@@ -39,6 +39,4 @@ export class PopularCategoriesComponent implements OnInit {
     },
     nav: true,
   };
-  constructor() {}
-  ngOnInit(): void {}
 }

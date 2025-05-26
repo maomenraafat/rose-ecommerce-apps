@@ -14,16 +14,18 @@ export class ProductService {
   _productAdaptorService = inject(ProductAdaptorService);
   constructor() {}
 
-  getAllProducts(categoryId: string): Observable<ProductApiData> {
-    return this._httpClient
-      .get(
-        `${environment.baseUrl}${ProductsEnPoints.AllProducts}?category=${categoryId}`
+  getAllProducts(categoryId?: string): Observable<ProductApiData> {
+    let url = `${environment.baseUrl}${ProductsEnPoints.AllProducts}`;
+    if (categoryId) {
+      url += `?category=${categoryId}`;
+    }
+    return this._httpClient.get<ProductApiData>(url).pipe(
+      map((res: ProductApiData) =>
+        this._productAdaptorService.adaptProducts(res)
+      ),
+      catchError((err) =>
+        throwError(() => this._productAdaptorService.adaptError(err))
       )
-      .pipe(
-        map((res: any) => this._productAdaptorService.adaptProducts(res)),
-        catchError((err) => {
-          return throwError(() => this._productAdaptorService.adaptError(err));
-        })
-      );
+    );
   }
 }

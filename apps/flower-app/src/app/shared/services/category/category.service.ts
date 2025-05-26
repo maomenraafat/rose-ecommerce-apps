@@ -20,9 +20,13 @@ export class CategoryService {
 
   getAllCategories(): Observable<CategoryApiData> {
     return this._httpClient
-      .get(`${environment.baseUrl}${CategoriesEnPoints.AllCategories}`)
+      .get<CategoryApiData>(
+        `${environment.baseUrl}${CategoriesEnPoints.AllCategories}`
+      )
       .pipe(
-        map((res: any) => this._categoryAdaptorService.adaptCategories(res)),
+        map((res: CategoryApiData) =>
+          this._categoryAdaptorService.adaptCategories(res)
+        ),
         catchError((err) => {
           return throwError(() => this._categoryAdaptorService.adaptError(err));
         })
