@@ -1,0 +1,49 @@
+@use '../../../../../styles/variables.scss' as vars;
+
+.category__item {
+  background-color: vars.$Remy-color;
+  border-radius: 20px;
+  cursor: pointer;
+  width: 110px;
+  /* width: 160px; */
+  /* height: 211px; */
+  min-height: 211px;
+  @media (min-width: 768px) {
+    min-height: 122px;
+    min-width: 217px;
+  }
+  .icon {
+    background-color: vars.$main-color;
+    padding: 20px;
+  }
+  .icon__text {
+    p {
+      color: vars.$text-color;
+      font-family: vars.$inter-font;
+      font-weight: 600;
+      font-size: 18px;
+      word-break: break-word;
+      max-width: 120px;
+      margin: 5px auto;
+    }
+    span {
+      color: vars.$salte-color;
+      font-family: vars.$roboto-font;
+      font-weight: 400;
+    }
+  }
+}
+
+::ng-deep {
+  .owl-carousel {
+    .owl-stage {
+      display: flex;
+      padding: 10px 0;
+    }
+    .owl-item {
+      padding: 0 10px;
+      width: auto !important;
+      min-width: 0 !important;
+    }
+  }
+}
