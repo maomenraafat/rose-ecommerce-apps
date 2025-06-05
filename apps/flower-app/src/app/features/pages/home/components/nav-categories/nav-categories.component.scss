@@ -1,0 +1,84 @@
+@use '../../../../../styles/variables.scss' as vars;
+
+.nav__categories {
+  font-family: vars.$inter-font;
+  color: vars.$text-color;
+  position: relative;
+
+  .category__list {
+    font-weight: 400;
+    display: flex;
+    gap: 12px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    li {
+      position: relative;
+      padding-bottom: 8px;
+      cursor: pointer;
+      white-space: nowrap;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: vars.$main-color;
+        transition: width 0.3s ease;
+      }
+
+      &:hover,
+      &.active {
+        color: vars.$main-color;
+
+        &::after {
+          width: 100%;
+        }
+      }
+
+      &.dropdown {
+        position: relative;
+        .dropdown-toggle {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          color: vars.$text-color;
+        }
+
+        .dropdown-menu {
+          color: vars.$text-color;
+          list-style: none;
+          position: absolute;
+          top: 100%;
+          left: -90px;
+          background: white;
+          border-radius: 4px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+          padding: 8px 0;
+          min-width: 160px;
+          z-index: 100;
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.2s ease;
+          overflow: hidden;
+
+          li {
+            padding: 8px 16px;
+
+            &:hover {
+              background: rgba(0, 0, 0, 0.05);
+            }
+          }
+        }
+
+        &:hover .dropdown-menu {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+  }
+}
