@@ -3,11 +3,16 @@
 @use './style/variables' as vars;
 @use './style/break-boints' as bp;
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
-@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
 body {
   margin: 0;
   box-sizing: border-box;
+}
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  // --Roboto-font: 'Roboto', sans-serif;
+  // --Inter-font: 'Inter', sans-serif;
 }
 .owl-theme .owl-dots {
   position: absolute;
@@ -32,7 +37,7 @@ body {
 .object-fit-cover {
   object-fit: cover;
 }
-.discover-now-btn{
+.discover-now-btn {
   border-radius: 20px;
   background-color: vars.$main-color;
   border: none;
