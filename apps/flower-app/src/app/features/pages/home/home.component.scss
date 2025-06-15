@@ -1,0 +1,68 @@
+@use './../../../../style/_variables.scss' as vars;
+@use './../../../../style/functions-mixins' as funs;
+@use './../../../../style/break-boints' as bp;
+.home-container {
+  width: 90%;
+  margin: auto;
+  .special-gifts-main-card {
+    position: relative;
+    img {
+      height: funs.pxToRem(vars.$slider-height);
+      border-radius: 14px;
+    }
+    .main-card-content {
+      position: absolute;
+      width: 90%;
+      bottom: funs.pxToRem(30);
+      left: funs.pxToRem(18);
+      h6 {
+        font-family: vars.$roboto-font;
+        color: vars.$main-color;
+        letter-spacing: funs.pxToRem(7);
+        font-size: funs.pxToRem(16);
+        margin: 0;
+      }
+      h2 {
+        font-family: vars.$inter-font;
+        color: vars.$text-color;
+        margin: funs.pxToRem(12) 0;
+        font-size: funs.pxToRem(26);
+      }
+    }
+  }
+  .special-gifts-slider {
+    height: 100%;
+  }
+  .special-gifts-bannar {
+    background-color: vars.$remy-color;
+    border-radius: 20px;
+    margin: funs.pxToRem(80) auto;
+    padding: funs.pxToRem(40);
+  }
+}
+@media only screen and (max-width: bp.$md) {
+  .home-container {
+    .special-gifts-main-card {
+      .main-card-content {
+        bottom: 50%;
+        width: 60%;
+        transform: translateY(50%);
+      }
+    }
+    .occasion-gifts-card {
+      height: funs.pxToRem(272);
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      .occasion-gifts-content {
+        position: absolute;
+        width: 80%;
+        bottom: 50%;
+        right: 50%;
+        margin: auto;
+        text-align: center;
+        transform: translateX(50%) translateY(50%);
+      }
+    }
+  }
+}

@@ -1,2 +1,33 @@
-<app-popular-categories></app-popular-categories>
+ <app-popular-categories></app-popular-categories>
+<main class="home-container">
+    <div class="grid">
+        <div class="special-gifts-main-card col-12 md:col-4 lg:col-3">
+            <img src="./images/special-gifts-beside-slider.png"
+                class="w-full object-fit-cover" alt>
+            <div class="main-card-content">
+                <h6>Start $10.99</h6>
+                <h2>Special Gifts Box For Your Love</h2>
+                <app-submit-btn [icon]="true">Shop Now</app-submit-btn>
+            </div>
+        </div>
+        <div class="special-gifts-slider col-12 md:col-8 lg:col-9">
+            <app-special-gifts-slider></app-special-gifts-slider>
+        </div>
+        @for (item of specialGiftsCards; track $index) {
+
+        <div class="col-12 md:col-4">
+            <app-special-gifts-cards-card
+                [item]="item"></app-special-gifts-cards-card>
+        </div>
+        }
+    </div>
+    <div class="special-gifts-bannar grid">
+        @for (item of specialGiftsBannar; track $index) {
+        <div class="bannar-card col-12 md:col-3">
+            <app-special-gifts-bannar-card
+                [item]="item"></app-special-gifts-bannar-card>
+        </div>
+        }
+    </div>
+</main>
 <app-popular-items></app-popular-items>

@@ -1,0 +1,23 @@
+@use './../../../style/functions-mixins' as funs;
+@use './../../../style/variables' as vars;
+
+.submit-btn {
+  background-color: vars.$main-color;
+  border: none;
+  color: vars.$white;
+  padding: funs.pxToRem(9) funs.pxToRem(18);
+  width: funs.pxToRem(123);
+  height: funs.pxToRem(46);
+  cursor: pointer;
+  box-shadow: 0px 0px 37.28px 4.66px #0000000d;
+  i{
+    margin: funs.pxToRem(5);;
+  }
+}
+.rounded-10{
+    border-radius: 10px;
+}
+.rounded-20{
+    border-radius: 20px;
+
+}

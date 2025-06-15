@@ -1,0 +1,27 @@
+@use './../../../../style/_variables.scss' as vars;
+@use './../../../../style/functions-mixins' as funs;
+@use './../../../../style/break-boints' as bp;
+
+.icon-card {
+  background-color: vars.$main-color;
+  min-width: funs.pxToRem(65);
+  max-width: funs.pxToRem(65);
+  height: funs.pxToRem(65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.content-card {
+  font-family: vars.$roboto-font;
+  h5 {
+    color: vars.$text-color;
+    margin: 0;
+    font-size: funs.pxToRem(20);
+  }
+  p {
+    color: vars.$salte-color;
+    margin: funs.pxToRem(5) 0 0 0;
+    font-size: funs.pxToRem(16);
+  }
+}
