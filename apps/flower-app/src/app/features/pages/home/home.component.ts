@@ -28,12 +28,6 @@ import { Category } from '../../../shared/interfaces/category';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-@Component({
-  selector: 'app-home',
-  imports: [CommonModule, PopularCategoriesComponent, PopularItemsComponent],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
-})
 export class HomeComponent implements OnInit {
   private readonly destroy$ = new Subject<void>();
   private readonly _categoryService = inject(CategoryService);
