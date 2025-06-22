@@ -1,0 +1,16 @@
+<div class="our-gallery-section md:text-center overflow-hidden">
+  <div class="mb-4">
+    <p class="header-text">Our Gallery</p>
+    <div class="title-section">
+      <p class="fa-xl">Let's Check Our Photo Gallery</p>
+    </div>
+  </div>
+
+  <div class="our-gallery-items grid">
+    @for (item of galleryItems; track $index) {
+    <div [class]="item.style">
+      <img [src]="item.imageUrl" class="w-full block" alt="" />
+    </div>
+    }
+  </div>
+</div>

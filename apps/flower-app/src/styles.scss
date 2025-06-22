@@ -46,3 +46,33 @@ body {
   height: funs.pxToRem(35);
   cursor: pointer;
 }
+.title-section {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 16px;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 35%;
+    height: 3px;
+    background-color: vars.$main-color;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 76%;
+    height: 17px;
+    background-color: vars.$remy-color;
+    border-radius: 0 20px 20px 0;
+    z-index: -1;
+  }
+  p {
+    font-weight: 700;
+    margin: 0;
+    padding-bottom: 8px;
+  }
+}

@@ -14,6 +14,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { CategoryService } from '../../../shared/services/category/category.service';
 import { CategoryApiRes } from '../../../shared/interfaces/category-api-data';
 import { Category } from '../../../shared/interfaces/category';
+import { OurGalleryComponent } from './components/our-gallery/our-gallery.component';
 @Component({
   selector: 'app-home',
   imports: [
@@ -24,13 +25,8 @@ import { Category } from '../../../shared/interfaces/category';
     SpecialGiftsBannarCardComponent,
     PopularCategoriesComponent,
     PopularItemsComponent,
+    OurGalleryComponent,
   ],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
-})
-@Component({
-  selector: 'app-home',
-  imports: [CommonModule, PopularCategoriesComponent, PopularItemsComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
