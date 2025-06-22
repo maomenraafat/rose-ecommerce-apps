@@ -1,11 +1,9 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { SpecialGiftsSliderComponent } from '../../components/special-gifts-slider/special-gifts-slider.component';
 import { SubmitBtnComponent } from '../../../shared/components/submit-btn.component';
-import {
-  SpecialGiftsBannar,
-  SpecialGiftsCards,
-} from '../../models/staticDataToDisplay';
+import { SpecialGiftsBannar, SpecialGiftsCards } from '../../models/staticDataToDisplay';
 import { SpecialGiftsCardsCardComponent } from '../../components/special-gifts-cards-card/special-gifts-cards-card.component';
 import { SpecialGiftsBannarCardComponent } from '../../components/special-gifts-bannar-card/special-gifts-bannar-card.component';
 import { PopularCategoriesComponent } from './components/popular-categories/popular-categories.component';
@@ -14,30 +12,36 @@ import { Subject, takeUntil } from 'rxjs';
 import { CategoryService } from '../../../shared/services/category/category.service';
 import { CategoryApiRes } from '../../../shared/interfaces/category-api-data';
 import { Category } from '../../../shared/interfaces/category';
+import { ThemeManagerService } from '../../../core/services/theme-manager/theme/theme-manager.service';
+import { FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-home',
   imports: [
     CommonModule,
+    FormsModule,
     SpecialGiftsSliderComponent,
     SubmitBtnComponent,
     SpecialGiftsCardsCardComponent,
     SpecialGiftsBannarCardComponent,
     PopularCategoriesComponent,
     PopularItemsComponent,
+    ToggleSwitchModule,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-@Component({
-  selector: 'app-home',
-  imports: [CommonModule, PopularCategoriesComponent, PopularItemsComponent],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
-})
-export class HomeComponent implements OnInit {
-  private readonly destroy$ = new Subject<void>();
+export class HomeComponent implements OnInit, OnDestroy {
+  // Call Services
+  public readonly _themeManager = inject(ThemeManagerService)
   private readonly _categoryService = inject(CategoryService);
+
+  // Variables
+  private readonly destroy$ = new Subject<void>();
   categoryList!: Category[];
+  themeValue: boolean = false;
+
+
   specialGiftsCards: SpecialGiftsCards[] = [
     {
       img: 'occasion-gifts-1.png',
@@ -58,6 +62,8 @@ export class HomeComponent implements OnInit {
       buttonContent: 'Discover Now',
     },
   ];
+
+
   specialGiftsBannar: SpecialGiftsBannar[] = [
     {
       img: 'Icon.png',
@@ -81,9 +87,7 @@ export class HomeComponent implements OnInit {
     },
   ];
 
-  ngOnInit(): void {
-    this.getAllCategories();
-  }
+
   getAllCategories() {
     this._categoryService.isLoadingCategory.set(true);
     this._categoryService
@@ -104,8 +108,29 @@ export class HomeComponent implements OnInit {
         },
       });
   }
+
+
+  toggleTheme() {
+    console.log(this.themeValue);
+    this._themeManager.toggleTheme();
+  }
+
+  getUserPrefFromCookies() {
+    const theme = this._themeManager.getCurrentTheme();
+    if (theme == 'dark') {
+      this.themeValue = true;
+    }
+  }
+
+  ngOnInit(): void {
+    this.getAllCategories();
+    this._themeManager.initTheme();
+    this.getUserPrefFromCookies();
+  }
+
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
   }
+
 }
