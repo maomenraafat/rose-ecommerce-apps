@@ -1,4 +1,16 @@
- <app-popular-categories></app-popular-categories>
+<!-- Start Dark & Light Mode -->
+    <p-toggleswitch [(ngModel)]="themeValue" (ngModelChange)="toggleTheme()">
+        <ng-template #handle>
+            <i class="!text-xs pi"
+                [class.pi-moon]="themeValue == true"
+                [class.pi-sun]="themeValue == false"
+            ></i>
+        </ng-template>
+    </p-toggleswitch>
+<!-- End Dark & Light Mode -->
+
+
+<app-popular-categories></app-popular-categories>
 <main class="home-container">
     <div class="grid">
         <div class="special-gifts-main-card col-12 md:col-4 lg:col-3">
@@ -31,3 +43,4 @@
     </div>
 </main>
 <app-popular-items></app-popular-items>
+
