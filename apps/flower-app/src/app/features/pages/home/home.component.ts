@@ -15,6 +15,7 @@ import { Category } from '../../../shared/interfaces/category';
 import { ThemeManagerService } from '../../../core/services/theme-manager/theme/theme-manager.service';
 import { FormsModule } from '@angular/forms';
 
+
 @Component({
   selector: 'app-home',
   imports: [
