@@ -4,16 +4,75 @@
 @use './style/break-boints' as bp;
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+
+:root {
+  // Main color for light mode 
+  --main-light-color: #F82BA9;
+
+  // Light Background
+  --background-color: #ffffff;
+
+  --card-price-color: #F05454;
+  --add-card-and-about-bg: #8C52FF;
+  --card-layer: #F82BA9B2;
+
+  --features-bg-color: #FEEDF7;
+  --features-icon-bg: var(--main-color);
+  --features-icon-color: #FFFFFF;
+  --features-subtext-color: #757F95;
+
+
+  // Shared section styles
+  --all-sections-headers-color: var(--main-color);
+  --all-sections-title-color: #160E4B;
+  --all-sections-title-sub-color: var(--main-color);
+  --all-sections-title-underline-color: var(--main-color);
+  --all-button-bg: var(--main-color);
+  --all-button-color: #fff;
+  --all-arroes-bg: var(--main-color);
+}
+
+.dark {
+  // Main color for dark mode
+  --main-dark-color: #FFC2D0;
+
+  // Dark Background
+  --background-color: #27272A;
+
+  --card-price-color: var(--main-dark-color);
+  --add-card-and-about-bg: #CD2E33;
+  --card-layer: #E6507380;
+
+  --features-bg-color: #3F3F46;
+  --features-icon-bg: var(--main-dark-color);
+  --features-icon-color: #000;
+  --features-subtext-color: #D4D4D8;
+
+  // Shared section styles
+  --all-sections-headers-color: #D75458;
+  --all-sections-title-color: var(--main-dark-color);
+  --all-sections-title-sub-color: #D75458;
+  --all-sections-title-underline-color: #741C21;
+  --all-button-bg: var(--main-dark-color);
+  --all-button-color: #27272A;
+  --all-arroes-bg: #CD2E33;
+}
+
 body {
   margin: 0;
   box-sizing: border-box;
+  background-color: var(--background-color);
+  transition: background-color 0.3s, color 0.3s;
 }
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-:root {
-  // --Roboto-font: 'Roboto', sans-serif;
-  // --Inter-font: 'Inter', sans-serif;
+.Dark-light-mode {
+  cursor: pointer;
+  transition: transform 0.3s;
 }
+
+
+
+// Start Owl
 .owl-theme .owl-dots {
   position: absolute;
   bottom: 8%;
