@@ -8,12 +8,12 @@ export interface Product {
   imgCover: string;
   images: string[];
   price: number;
-  priceAfterDiscount: number;
+  priceAfterDiscount: number | null;
   quantity: number;
   category: string;
   occasion: string;
   createdAt: string;
-  updatedAt: string;
+  updatedAt?: string;
   __v: number;
   isSuperAdmin: boolean;
   sold?: number;

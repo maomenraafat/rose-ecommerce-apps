@@ -2,8 +2,6 @@
 @use './../../../../style/functions-mixins' as funs;
 @use './../../../../style/break-boints' as bp;
 .home-container {
-  width: 90%;
-  margin: auto;
   .special-gifts-main-card {
     position: relative;
     img {
@@ -66,9 +64,3 @@
     }
   }
 }
-button {
-      padding: 10px 20px;
-      cursor: pointer;
-      border: none;
-      border-radius: 4px;
-    }
