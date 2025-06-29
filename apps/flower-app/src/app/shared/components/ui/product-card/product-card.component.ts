@@ -10,13 +10,16 @@ import { Product } from '../../../interfaces/product';
 })
 export class ProductCardComponent {
   @Input() product!: Product;
+
   getStarClass(starNumber: number, averageRating: number): string {
-    if (averageRating >= starNumber) {
+    const fullStars     = Math.floor(averageRating);   
+    const hasFraction   = averageRating % 1 !== 0;    
+    if (starNumber <= fullStars) {
       return 'fa-solid fa-star filled';
-    } else if (averageRating >= starNumber - 0.5) {
-      return 'fa-solid fa-star-half-alt half-filled';
-    } else {
-      return 'fa-regular fa-star';
     }
+    if (hasFraction && starNumber === fullStars + 1) {
+      return 'fa-solid fa-star-half-alt half-filled';
+    }
+    return 'fa-regular fa-star';
   }
 }

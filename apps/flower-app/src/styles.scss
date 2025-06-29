@@ -16,11 +16,16 @@
   --add-card-and-about-bg: #8C52FF;
   --card-layer: #F82BA9B2;
 
-  --features-bg-color: #FEEDF7;
-  --features-icon-bg: var(--main-color);
+  --features-bg: #FC6DC3;
+  --features-icon-bg: var(--main-light-color);
   --features-icon-color: #FFFFFF;
   --features-subtext-color: #757F95;
 
+  --filter-all-sections-bg: #fff;
+  --filter-all-text-color: #757F95;
+  --filter-all-title-color: #160E4B;
+  --filter-all-ckecked-bg: var(--main-light-color);
+  --filter-all-Unckecked-bg: #ffffff;
 
   // Shared section styles
   --all-sections-headers-color: var(--main-color);
@@ -43,10 +48,16 @@
   --add-card-and-about-bg: #CD2E33;
   --card-layer: #E6507380;
 
-  --features-bg-color: #3F3F46;
+  --features-bg: #3F3F46;
   --features-icon-bg: var(--main-dark-color);
   --features-icon-color: #000;
   --features-subtext-color: #D4D4D8;
+
+  --filter-all-sections-bg: #3F3F46;
+  --filter-all-title-color: #D75458;
+  --filter-all-text-color: var(--main-dark-color);
+  --filter-all-ckecked-bg: #D75458;
+  --filter-all-Unckecked-bg: #696969;
 
   // Shared section styles
   --all-sections-headers-color: #D75458;
@@ -65,14 +76,16 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
-.Dark-light-mode {
+// Global Classes
+.font-inter{
+  font-family: "Inter", sans-serif;
+}
+
+.cr{
   cursor: pointer;
-  transition: transform 0.3s;
 }
 
 
-
-// Start Owl
 .owl-theme .owl-dots {
   position: absolute;
   bottom: 8%;
