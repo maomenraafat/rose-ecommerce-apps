@@ -4,58 +4,62 @@
 @use './style/break-boints' as bp;
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-
 :root {
-  // Main color for light mode 
-  --main-light-color: #F82BA9;
+  // Main color for light mode
+  --main-light-color: #f82ba9;
 
   // Light Background
   --background-color: #ffffff;
 
-  --card-price-color: #F05454;
-  --add-card-and-about-bg: #8C52FF;
-  --card-layer: #F82BA9B2;
+  --card-price-color: #f05454;
+  --add-card-and-about-bg: #8c52ff;
+  --card-layer: #f82ba9b2;
 
-  --features-bg-color: #FEEDF7;
+  --features-bg-color: #feedf7;
   --features-icon-bg: var(--main-color);
-  --features-icon-color: #FFFFFF;
-  --features-subtext-color: #757F95;
-
+  --features-icon-color: #ffffff;
+  --features-subtext-color: #757f95;
 
   // Shared section styles
-  --all-sections-headers-color: var(--main-color);
-  --all-sections-title-color: #160E4B;
+  --all-sections-headers-color: var(--main-light-color);
+  --all-sections-title-color: #160e4b;
   --all-sections-title-sub-color: var(--main-color);
   --all-sections-title-underline-color: var(--main-color);
   --all-button-bg: var(--main-color);
   --all-button-color: #fff;
   --all-arroes-bg: var(--main-color);
+  --all-title-line-section: var(--main-light-color);
+  --nav-category-main: var(--all-sections-title-color);
+  --nav-category-active: var(--main-light-color);
 }
 
 .dark {
   // Main color for dark mode
-  --main-dark-color: #FFC2D0;
+  --main-dark-color: #ffc2d0;
 
   // Dark Background
-  --background-color: #27272A;
+  --background-color: #27272a;
 
   --card-price-color: var(--main-dark-color);
-  --add-card-and-about-bg: #CD2E33;
-  --card-layer: #E6507380;
+  --add-card-and-about-bg: #cd2e33;
+  --card-layer: #e6507380;
 
-  --features-bg-color: #3F3F46;
+  --features-bg-color: #3f3f46;
   --features-icon-bg: var(--main-dark-color);
   --features-icon-color: #000;
-  --features-subtext-color: #D4D4D8;
+  --features-subtext-color: #d4d4d8;
 
   // Shared section styles
-  --all-sections-headers-color: #D75458;
+  --all-sections-headers-color: #d75458;
   --all-sections-title-color: var(--main-dark-color);
-  --all-sections-title-sub-color: #D75458;
-  --all-sections-title-underline-color: #741C21;
+  --all-sections-title-sub-color: #d75458;
+  --all-sections-title-underline-color: #741c21;
   --all-button-bg: var(--main-dark-color);
-  --all-button-color: #27272A;
-  --all-arroes-bg: #CD2E33;
+  --all-button-color: #27272a;
+  --all-arroes-bg: #cd2e33;
+  --all-title-line-section: #ff668b;
+  --nav-category-main: var(--features-bg-color);
+  --nav-category-active: var(--main-dark-color);
 }
 
 body {
@@ -69,8 +73,6 @@ body {
   cursor: pointer;
   transition: transform 0.3s;
 }
-
-
 
 // Start Owl
 .owl-theme .owl-dots {
@@ -106,6 +108,7 @@ body {
   cursor: pointer;
 }
 .title-section {
+  color: var(--all-sections-title-color);
   position: relative;
   display: inline-block;
   margin-bottom: 16px;
@@ -116,7 +119,7 @@ body {
     left: 0;
     width: 35%;
     height: 3px;
-    background-color: vars.$main-color;
+    background-color: var(--all-title-line-section);
   }
   &::before {
     content: '';
@@ -125,7 +128,7 @@ body {
     left: 0;
     width: 76%;
     height: 17px;
-    background-color: vars.$remy-color;
+    background-color: var(--features-bg-color);
     border-radius: 0 20px 20px 0;
     z-index: -1;
   }
