@@ -46,6 +46,9 @@
     }
   }
   .card__text {
+    span{
+      font-weight: 600 !important;
+    }
     p {
       color: var(--all-sections-title-color);
       font-family: vars.$inter-font;
@@ -57,7 +60,7 @@
       display: flex;
       align-items: center;
       gap: 2px;
-      margin-bottom: 5px;
+      margin-bottom: 9px;
 
       i {
         color: #fba707;

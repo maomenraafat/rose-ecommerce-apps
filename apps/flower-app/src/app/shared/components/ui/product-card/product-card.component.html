@@ -8,7 +8,7 @@
       <span> <i class="fa-regular fa-heart"></i></span>
     </div>
   </div>
-  <div class="card__desc flex justify-content-between align-content-center p-2">
+  <div class="card__desc flex justify-content-between align-content-center p-3 pt-0">
     <div class="card__text">
       <p class="mt-0">{{ product.title.split(' ').splice(0, 3).join(' ') }}</p>
       <div class="icon__stars">
@@ -16,11 +16,12 @@
         <i [class]="getStarClass(star, product.rateAvg)"></i>
         }
       </div>
-      <span class="block m-1">${{ product.price }}</span>
+      <span class="text-sm my-1">${{ product.priceAfterDiscount  ?? product.price }}</span>
+      @if(product.priceAfterDiscount) {
+        <span class="text-gray-400 text-sm m-2">${{ product.price }}</span>
+      }
     </div>
-    <div
-      class="card__icon flex justify-content-center align-items-center border-circle"
-    >
+    <div class="card__icon flex justify-content-center align-items-center border-circle">
       <i class="fa-solid fa-bag-shopping"></i>
     </div>
   </div>

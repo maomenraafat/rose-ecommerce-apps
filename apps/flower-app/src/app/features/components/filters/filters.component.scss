@@ -1,0 +1,98 @@
+.filters{
+
+    .search, .categories, .brands, .price-rating, .sales, .ratings, .sizes{
+        box-shadow: 0px 1px 10px 0px #0000000e;
+        color: var(--filter-all-text-color);
+        background-color: var(--filter-all-sections-bg);
+        h4{
+            color: var(--filter-all-title-color);
+            letter-spacing: 0.07rem;
+            position: relative;
+            &::after{
+                content: "";
+                position: absolute;
+                left: 8%;
+                bottom: -24px;
+                width: 84%;
+                height: 2px;
+                background-color: var(--features-subtext-color);
+            }
+        }
+        ::ng-deep .p-checkbox-box{
+            background-color: var(--filter-all-Unckecked-bg) ;
+        }
+        ::ng-deep .p-checkbox.p-highlight{
+            .p-checkbox-box{
+                background-color: var(--filter-all-ckecked-bg) ;  
+                border-color: var(--filter-all-ckecked-bg) ;
+            }
+            .p-checkbox-icon{
+                color: transparent;  
+            }
+        }
+        label{
+            font-size: 14px;
+        }
+        span{
+            font-size: 14px;
+        }
+    }
+    .search-input{
+        box-shadow: 0px 0px 4px 0px #00000026;
+        border: 2px solid transparent !important;
+        transition: border 0.3s;
+        &::placeholder{
+            color: var(--features-subtext-color);
+            font-size: 12px;
+            letter-spacing: 0.05rem;
+        }
+        &:focus{
+            border: 2px solid var(--features-icon-bg) !important;
+            outline: none;
+        }
+    }
+    .color-rate{
+        color: var(--features-icon-bg);
+        font-size: 18px !important;
+    }
+}
+
+// Price Rating
+::ng-deep .price-slider .p-slider-range {
+  background: var(--features-icon-bg);                 
+}
+::ng-deep .price-slider .p-slider-handle {
+  border: 2px solid var(--features-icon-bg);
+  background: var(--features-icon-bg);
+}
+::ng-deep .p-slider-handle:focus-visible{
+box-shadow: var(--features-icon-bg);
+outline:var(--features-icon-bg);
+outline-offset:var(--features-icon-bg);
+border-color:var(--features-icon-bg);
+}
+::ng-deep .p-slider-handle::before {
+    content: "";
+    width: var(--p-slider-handle-content-width);
+    height: var(--p-slider-handle-content-height);
+    display: block;
+    background:var(--features-icon-bg) !important;
+    border-radius: var(--p-slider-handle-content-border-radius);
+    box-shadow: none !important;
+    border: none !important;
+}
+
+
+// Media Screens
+@media (max-width: 768px) {
+    .filters{
+        h4{
+            &::after{
+                bottom: -16px !important;
+            }
+        }
+        .color-rate{
+            font-size: 14px !important;
+        }
+    }
+}
