@@ -1,7 +1,7 @@
 @use '../../../../../styles/variables.scss' as vars;
 
 .category__item {
-  background-color: vars.$Remy-color;
+  background-color: var(--features-bg-color);
   border-radius: 20px;
   cursor: pointer;
   width: 110px;
@@ -13,12 +13,12 @@
     min-width: 217px;
   }
   .icon {
-    background-color: vars.$main-color;
+    background-color: var(--main-light-color);
     padding: 20px;
   }
   .icon__text {
     p {
-      color: vars.$text-color;
+      color: var(--all-sections-title-color);
       font-family: vars.$inter-font;
       font-weight: 600;
       font-size: 18px;
@@ -27,7 +27,7 @@
       margin: 5px auto;
     }
     span {
-      color: vars.$salte-color;
+      color: var(--features-subtext-color);
       font-family: vars.$roboto-font;
       font-weight: 400;
     }

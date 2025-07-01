@@ -2,8 +2,9 @@
 
 .nav__categories {
   font-family: vars.$inter-font;
-  color: vars.$text-color;
+  color: var(--nav-category-main);
   position: relative;
+  font-weight: 500;
 
   .category__list {
     font-weight: 400;
@@ -26,13 +27,13 @@
         left: 0;
         width: 0;
         height: 2px;
-        background-color: vars.$main-color;
+        background-color: var(--nav-category-active);
         transition: width 0.3s ease;
       }
 
       &:hover,
       &.active {
-        color: vars.$main-color;
+        color: var(--nav-category-active);
 
         &::after {
           width: 100%;
@@ -45,16 +46,16 @@
           display: flex;
           align-items: center;
           gap: 4px;
-          color: vars.$text-color;
+          color: var(--all-sections-title-color);
         }
 
         .dropdown-menu {
-          color: vars.$text-color;
+          color: var(--all-sections-title-color);
           list-style: none;
           position: absolute;
           top: 100%;
           left: -90px;
-          background: white;
+          background: var(--features-bg-color);
           border-radius: 4px;
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
           padding: 8px 0;

@@ -1,7 +1,7 @@
 @use '../../../../../styles/variables' as vars;
 .our-gallery-section {
   .header-text {
-    color: vars.$main-color;
+    color: var(--all-sections-headers-color);
     font-weight: 700;
     font-size: 19px;
     font-family: vars.$roboto-font;
