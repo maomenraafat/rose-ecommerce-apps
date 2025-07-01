@@ -3,7 +3,10 @@ import { CommonModule } from '@angular/common';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { SpecialGiftsSliderComponent } from '../../components/special-gifts-slider/special-gifts-slider.component';
 import { SubmitBtnComponent } from '../../../shared/components/submit-btn.component';
-import { SpecialGiftsBannar, SpecialGiftsCards } from '../../models/staticDataToDisplay';
+import {
+  SpecialGiftsBannar,
+  SpecialGiftsCards,
+} from '../../models/staticDataToDisplay';
 import { SpecialGiftsCardsCardComponent } from '../../components/special-gifts-cards-card/special-gifts-cards-card.component';
 import { SpecialGiftsBannarCardComponent } from '../../components/special-gifts-bannar-card/special-gifts-bannar-card.component';
 import { PopularCategoriesComponent } from './components/popular-categories/popular-categories.component';
@@ -12,9 +15,9 @@ import { Subject, takeUntil } from 'rxjs';
 import { CategoryService } from '../../../shared/services/category/category.service';
 import { CategoryApiRes } from '../../../shared/interfaces/category-api-data';
 import { Category } from '../../../shared/interfaces/category';
+import { OurGalleryComponent } from './components/our-gallery/our-gallery.component';
 import { ThemeManagerService } from '../../../core/services/theme-manager/theme/theme-manager.service';
 import { FormsModule } from '@angular/forms';
-
 
 @Component({
   selector: 'app-home',
@@ -27,6 +30,7 @@ import { FormsModule } from '@angular/forms';
     SpecialGiftsBannarCardComponent,
     PopularCategoriesComponent,
     PopularItemsComponent,
+    OurGalleryComponent,
     ToggleSwitchModule,
   ],
   templateUrl: './home.component.html',
@@ -34,7 +38,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   // Call Services
-  public readonly _themeManager = inject(ThemeManagerService)
+  public readonly _themeManager = inject(ThemeManagerService);
   private readonly _categoryService = inject(CategoryService);
   // private readonly fb = inject(FormBuilder);
 
@@ -42,7 +46,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   private readonly destroy$ = new Subject<void>();
   categoryList!: Category[];
   themeValue: boolean = false;
-
 
   specialGiftsCards: SpecialGiftsCards[] = [
     {
@@ -64,7 +67,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       buttonContent: 'Discover Now',
     },
   ];
-
 
   specialGiftsBannar: SpecialGiftsBannar[] = [
     {
@@ -89,7 +91,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     },
   ];
 
-
   getAllCategories() {
     this._categoryService.isLoadingCategory.set(true);
     this._categoryService
@@ -110,7 +111,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         },
       });
   }
-
 
   toggleTheme() {
     console.log(this.themeValue);
@@ -134,5 +134,4 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.destroy$.next();
     this.destroy$.complete();
   }
-
 }
