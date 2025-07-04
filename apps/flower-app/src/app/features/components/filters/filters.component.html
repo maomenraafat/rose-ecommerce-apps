@@ -1,3 +1,7 @@
+
+
+
+
 <section class="filters flex flex-column md:gap-4 gap-3 font-inter">
 
     <!------- Start Search ------->
@@ -11,52 +15,55 @@
     <div class="categories md:p-4 p-3 border-round-2xl">
         <h4 class="fw-bold m-0 md:mb-6 mb-5">Category</h4>
         <div class="flex flex-column gap-2">
-            @for (category of categories; track $index) {
-                <div class="flex justify-content-between align-items-center">
-                    <div class="flex align-items-center min-w-0">
-                        <p-checkbox [inputId]="category.key" name="categories" [value]="category"></p-checkbox>
-                        <label [for]="category.key" class="ml-2 w-full h-full cr white-space-nowrap overflow-hidden text-overflow-ellipsis">
-                            {{ category.name }}
-                        </label>
+            @for (category of categories(); track $index) {
+                @if (category.productsCount !== 0) {
+                    <div class="flex justify-content-between align-items-center">
+                        <div class="flex align-items-center min-w-0">
+                            <p-checkbox [inputId]="category._id" name="categories" [value]="category"></p-checkbox>
+                            <label [for]="category._id" class="ml-2 w-full h-full cr white-space-nowrap overflow-hidden text-overflow-ellipsis">
+                                {{ category.name }}
+                            </label>
+                        </div>
+                        <span class="flex-none ml-2">({{ category.productsCount }})</span>
                     </div>
-                    <span class="flex-none ml-2">({{ category.availableProducts }})</span>
-                </div>
+                }
             }
         </div>
     </div>
     <!------- End Category ------->
 
-    <!------- Start Brands ------->
+    <!------- Start Occasions ------->
     <div class="brands md:p-4 p-3 border-round-2xl">
-        <h4 class="fw-bold m-0 md:mb-6 mb-5">Brands</h4>
+        <h4 class="fw-bold m-0 md:mb-6 mb-5">Occasions</h4>
         <div class="flex flex-column gap-2">
-            @for (brand of brands; track $index) {
-                <div class="flex justify-content-between align-items-center">
-                    <div class="flex align-items-center min-w-0">
-                        <p-checkbox [inputId]="brand.key" name="brands" [value]="brand"></p-checkbox>
-                        <label [for]="brand.key" class="ml-2 w-full h-full cr white-space-nowrap overflow-hidden text-overflow-ellipsis">
-                            {{ brand.name }}
-                        </label>
+            @for (occasion of occasions(); track $index) {
+                @if (occasion.productsCount !== 0) {
+                    <div class="flex justify-content-between align-items-center">
+                        <div class="flex align-items-center min-w-0">
+                            <p-checkbox [inputId]="occasion._id" name="brands" [value]="occasion"></p-checkbox>
+                            <label [for]="occasion._id" class="ml-2 w-full h-full cr white-space-nowrap overflow-hidden text-overflow-ellipsis">
+                                {{ occasion.name }}
+                            </label>
+                        </div>
+                        <span class="flex-none ml-2">({{ occasion.productsCount }})</span>
                     </div>
-                    <span class="flex-none ml-2">({{ brand.availableProducts }})</span>
-                </div>
+                }
             }
         </div>
     </div>
-    <!------- End Brands ------->
+    <!------- End Occasions ------->
 
     <!------- Start Price Rating ------->
     <div class="price-rating md:p-4 p-3 border-round-2xl">
         <h4 class="fw-bold m-0 md:mb-5 mb-4">Price Rating</h4>
         <div class="card flex justify-center">
             <div class="w-full">
-                <span class="inline-block m-2 fw-bold">$0</span>
-                <span class="inline-block fw-bold">-</span>
-                <span class="inline-block m-2 fw-bold">${{value}}</span>
+                <span class="inline-block color-rate m-2 fw-bold">$0</span>
+                <span class="inline-block color-rate fw-bold">-</span>
+                <span class="inline-block color-rate m-2 fw-bold">${{value}}</span>
                 <p-slider [(ngModel)]="value" class="w-full mt-3 price-slider"/>
             </div>
         </div>
-        <!-- <input type="text" name="Price Rating" class="py-2 px-3 border-round-3xl w-full border-none"> -->
     </div>
     <!------- End Price Rating ------->
 
@@ -96,7 +103,7 @@
     <!------- End Ratings ------->
 
     <!------- Start Size ------->
-    <div class="sizes md:p-4 p-3 border-round-2xl">
+    <!-- <div class="sizes md:p-4 p-3 border-round-2xl">
         <h4 class="fw-bold m-0 md:mb-6 mb-5">Sizes</h4>
         <div class="flex flex-column gap-2">
             @for (size of sizes; track $index) {
@@ -108,7 +115,7 @@
                 </div>
             }
         </div>
-    </div>
+    </div> -->
     <!------- End Size ------->
 
 </section>

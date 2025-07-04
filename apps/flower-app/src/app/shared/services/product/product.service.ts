@@ -2,20 +2,20 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { ProductApiData } from '../../interfaces/product-api-data';
-import { environment } from '../../../environments/environments';
-import { ProductsEnPoints } from '../../../enums/products.enPoints';
+import { environment } from '../../../env/environments';
 import { ProductAdaptorService } from '../../../adaptors/product/product-adaptor.adaptor';
+import { API_EndPoints } from '../../../enums/endPoints';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  _httpClient = inject(HttpClient);
-  _productAdaptorService = inject(ProductAdaptorService);
-  constructor() {}
+  private readonly _httpClient = inject(HttpClient);
+  private readonly _productAdaptorService = inject(ProductAdaptorService);
+
 
   getAllProducts(categoryId?: string): Observable<ProductApiData> {
-    let url = `${environment.baseUrl}${ProductsEnPoints.AllProducts}`;
+    let url = `${environment.baseUrl}${API_EndPoints.Products.All}`;
     if (categoryId) {
       url += `?category=${categoryId}`;
     }

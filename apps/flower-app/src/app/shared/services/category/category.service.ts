@@ -2,10 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { CategoryApiData } from '../../interfaces/category-api-data';
-import { environment } from '../../../environments/environments';
-import { CategoriesEnPoints } from '../../../enums/categories.enPoints';
-import { CategoryAdaptorService } from '../../../adaptors/category/category-adaptor.adaptor';
+import { environment } from '../../../env/environments';
+
 import { Category } from '../../interfaces/category';
+import { CategoryAdaptorService } from '../../../adaptors/category/category-adaptor.adaptor';
+import { API_EndPoints } from '../../../enums/endPoints';
 
 @Injectable({
   providedIn: 'root',
@@ -16,12 +17,12 @@ export class CategoryService {
   isLoadingCategory: WritableSignal<boolean> = signal(true);
   _httpClient = inject(HttpClient);
   _categoryAdaptorService = inject(CategoryAdaptorService);
-  constructor() {}
+
 
   getAllCategories(): Observable<CategoryApiData> {
     return this._httpClient
       .get<CategoryApiData>(
-        `${environment.baseUrl}${CategoriesEnPoints.AllCategories}`
+        `${environment.baseUrl}${API_EndPoints.Categories.All}`
       )
       .pipe(
         map((res: CategoryApiData) =>
