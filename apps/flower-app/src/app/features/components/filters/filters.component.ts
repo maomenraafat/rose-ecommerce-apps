@@ -1,9 +1,14 @@
-import { Component } from '@angular/core';
+import { catchError, map, of } from 'rxjs';
+import { Component, effect, inject, Signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CheckboxModule } from 'primeng/checkbox';
 import { Slider } from 'primeng/slider';
+import { toSignal } from '@angular/core/rxjs-interop'; 
 import { InputTextModule } from 'primeng/inputtext';
+import { FiltersOptionsService } from '../../services/FiltersOptions/filters-options.service';
+import { CategoryMini } from '../../interfaces/categoryRes';
+import { OccasionMini } from '../../interfaces/occasionRes';
 
 
 @Component({
@@ -13,8 +18,33 @@ import { InputTextModule } from 'primeng/inputtext';
   styleUrl: './filters.component.scss',
 })
 export class FiltersComponent {
+  // Call Services
+  private readonly _filtersOptionsService = inject(FiltersOptionsService)
+
+  // Variable
   value: number = 60;
 
+  readonly categories: Signal<CategoryMini[]> = toSignal(
+  this._filtersOptionsService.getAllCategories().pipe(
+    map(res => res.categories),
+    catchError( (err) => of(err))
+  ),
+  { initialValue: [] }        
+);
+
+  readonly occasions: Signal<OccasionMini[]> = toSignal(
+    this._filtersOptionsService.getAllOccasions().pipe(
+      map( res => res.occasions),
+      catchError( (err) => of(err))
+    ),
+    { initialValue: []}
+  )
+
+  private readonly _log = effect( () => {
+    console.log('categories =>> ', this.categories());
+    console.log('occasions =>> ', this.occasions());
+    
+  })
 
   rows: any[] = [
     { number: '5', key: 'one'},
@@ -24,21 +54,6 @@ export class FiltersComponent {
     { number: '1', key: 'five'},
   ];
 
-  categories: any[] = [
-    { name: 'Home & Living', key: 'Home', availableProducts: '9'},
-    { name: 'Jewelry & Accessories', key: 'Jewelry', availableProducts: '13'},
-    { name: 'Occasion Gifts', key: 'Occasion', availableProducts: '5'},
-    { name: 'Occasion & Stationery', key: 'Stationery', availableProducts: '18'},
-    { name: 'Other', key: 'Other', availableProducts: '11'}
-  ];
-
-  brands: any[] = [
-      { name: 'Tovola', key: 'Tovola', availableProducts: '13'},
-      { name: 'Sundoy', key: 'Sundoy', availableProducts: '9'},
-      { name: 'Sahoo Gifts', key: 'Sahoo Gifts', availableProducts: '16'},
-      { name: 'OCasterly', key: 'Casterly', availableProducts: '5'},
-      { name: 'Mainden Gifts', key: 'Mainden Gifts', availableProducts: '11'}
-  ];
 
   sales: any[] = [
       { name: 'On Sale', key: 'OnSale', availableProducts: '7'},
@@ -47,12 +62,12 @@ export class FiltersComponent {
       { name: 'Discount', key: 'Discount', availableProducts: '13'},
   ];
 
-  sizes: any[] = [
-      { name: 'Extra Large', key: 'ExtraLarge'},
-      { name: 'Large', key: 'Large'},
-      { name: 'Medium', key: 'Medium'},
-      { name: 'Small', key: 'Small'},
-      { name: 'Extra Smal', key: 'ExtraSmall'}
-  ];
+  // sizes: any[] = [
+  //     { name: 'Extra Large', key: 'ExtraLarge'},
+  //     { name: 'Large', key: 'Large'},
+  //     { name: 'Medium', key: 'Medium'},
+  //     { name: 'Small', key: 'Small'},
+  //     { name: 'Extra Smal', key: 'ExtraSmall'}
+  // ];
 
 }
