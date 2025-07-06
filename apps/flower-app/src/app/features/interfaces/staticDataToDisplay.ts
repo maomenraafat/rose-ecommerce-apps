@@ -9,3 +9,9 @@ export interface SpecialGiftsBannar {
   title: string;
   describtion: string;
 }
+
+export interface SalesAndSizes {
+  name: string
+  key: string
+  availableProducts?: string
+}

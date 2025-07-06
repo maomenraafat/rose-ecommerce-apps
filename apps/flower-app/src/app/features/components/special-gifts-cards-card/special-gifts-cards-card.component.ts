@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SpecialGiftsCards } from '../../models/staticDataToDisplay';
+import { SpecialGiftsCards } from '../../interfaces/staticDataToDisplay';
 
 @Component({
   selector: 'app-special-gifts-cards-card',

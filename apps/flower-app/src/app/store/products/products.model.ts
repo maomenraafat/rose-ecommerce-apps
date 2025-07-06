@@ -3,12 +3,18 @@ import { Product } from '../../shared/interfaces/product';
 
 export interface ProductsState extends EntityState<Product> {
   loaded: boolean;
-  error : any;
+  filteredIds : string[]; 
 }
 
 export const initialState: ProductsState = {
   ids:[],  
   entities:{},
   loaded: false,
-  error: null,
+  filteredIds: [], 
 };
+
+export interface FiltersState {
+  categories: string[];
+  occasions: string[];
+  searchTerm: string;
+}

@@ -73,6 +73,25 @@
     </div>
     <!------- End Price Rating ------->
 
+    <!------- Start Sales ------->
+    <div class="sales md:p-4 p-3 border-round-2xl">
+        <h4 class="fw-bold m-0 md:mb-6 mb-5">Sales</h4>
+        <div class="flex flex-column gap-2">
+            @for (sale of sales; track $index) {
+                <div class="flex justify-content-between align-items-center">
+                    <div class="flex align-items-center min-w-0">
+                        <p-checkbox [inputId]="sale.key" [value]="sale"></p-checkbox>
+                        <label [for]="sale.key" class="ml-2 cr white-space-nowrap overflow-hidden text-overflow-ellipsis">
+                            {{ sale.name }}
+                        </label>
+                    </div>
+                    <span class="flex-none ml-2">({{ sale.availableProducts }})</span>
+                </div>
+            }
+        </div>
+    </div>
+    <!------- End Sales ------->
+
     <!------- Start Ratings ------->
     <div class="ratings md:p-4 p-3 border-round-2xl">
         <h4 class="fw-bold m-0 md:mb-6 mb-5">Ratings</h4>
@@ -89,6 +108,22 @@
         }
     </div>
     <!------- End Ratings ------->
+
+    <!------- Start Size ------->
+    <div class="sizes md:p-4 p-3 border-round-2xl">
+        <h4 class="fw-bold m-0 md:mb-6 mb-5">Sizes</h4>
+        <div class="flex flex-column gap-2">
+            @for (size of sizes; track $index) {
+                <div class="flex align-items-center min-w-0">
+                    <p-checkbox [inputId]="size.key" [value]="size"></p-checkbox>
+                    <label [for]="size.key" class="ml-2 w-fill h-full cr white-space-nowrap  overflow-hidden text-overflow-ellipsis">
+                        {{ size.name }}
+                    </label>
+                </div>
+            }
+        </div>
+    </div>
+    <!------- End Size ------->
 
 
 </section>

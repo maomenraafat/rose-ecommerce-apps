@@ -9,26 +9,26 @@ import { API_EndPoints } from '../../enums/endPoints';
 
 export class ProductsEffects {
   loadProducts$ = createEffect(() => {
-    const actions$ = inject(Actions);      
-    const http = inject(HttpClient);  
+  const actions$ = inject(Actions);      
+  const http = inject(HttpClient);  
 
-    return actions$.pipe(
-      ofType(ProductsActions.loadProducts),
-      switchMap(() =>
-        http
-          .get<{ products: Product[] }>(
-            `${environment.baseUrl}${API_EndPoints.Products.All}`
+  return actions$.pipe(
+    ofType(ProductsActions.loadProducts),
+    switchMap(() =>
+      http
+        .get<{ products: Product[] }>(
+          `${environment.baseUrl}${API_EndPoints.Products.All}`
+        )
+        .pipe(
+          map(({ products }) =>
+            ProductsActions.loadProductsSuccess({ products })
+          ),
+          catchError(error =>
+            of(ProductsActions.loadProductsFailure({ error }))
           )
-          .pipe(
-            map(({ products }) =>
-              ProductsActions.loadProductsSuccess({ products })
-            ),
-            catchError(error =>
-              of(ProductsActions.loadProductsFailure({ error }))
-            )
-          )
-      )
-    );
-  });
+        )
+    )
+  );
+});
 
 }

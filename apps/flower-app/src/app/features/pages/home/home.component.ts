@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { SpecialGiftsSliderComponent } from '../../components/special-gifts-slider/special-gifts-slider.component';
 import { SubmitBtnComponent } from '../../../shared/components/submit-btn.component';
-import { SpecialGiftsBannar, SpecialGiftsCards } from '../../models/staticDataToDisplay';
+import { SpecialGiftsBannar, SpecialGiftsCards } from '../../interfaces/staticDataToDisplay';
 import { SpecialGiftsCardsCardComponent } from '../../components/special-gifts-cards-card/special-gifts-cards-card.component';
 import { SpecialGiftsBannarCardComponent } from '../../components/special-gifts-bannar-card/special-gifts-bannar-card.component';
 import { PopularCategoriesComponent } from './components/popular-categories/popular-categories.component';

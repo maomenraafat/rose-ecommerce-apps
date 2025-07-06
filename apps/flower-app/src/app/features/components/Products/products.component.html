@@ -1,10 +1,10 @@
-
+<!------- Display Products ------->
 <section>
   <div class="grid">
     @for (product of products(); track $index) {
-    <div class="xxl:col-3 xl:col-4 md:col-6  col-12">
-      <app-product-card [product]="product"></app-product-card>
-    </div>
+      <div class="xxl:col-3 xl:col-4 md:col-6  col-12">
+        <app-product-card [product]="product"></app-product-card>
+      </div>
     }
   </div>
 </section>

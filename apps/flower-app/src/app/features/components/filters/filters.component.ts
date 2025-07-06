@@ -10,7 +10,8 @@ import { FiltersOptionsService } from '../../services/FiltersOptions/filters-opt
 import { CategoryMini } from '../../interfaces/categoryRes';
 import { OccasionMini } from '../../interfaces/occasionRes';
 import { Store } from '@ngrx/store';
-import { FiltersActions } from '../../../store/filters/filters.actions';
+import { ProductsActions } from '../../../store/products/products.actions';
+import { SalesAndSizes } from '../../interfaces/staticDataToDisplay';
 
 
 @Component({
@@ -47,11 +48,6 @@ export class FiltersComponent {
     { initialValue: []}
   )
 
-  private readonly log = effect( () => {
-    console.log('categories =>> ', this.categories());
-    console.log('occasions =>> ', this.occasions());
-  })
-
   rows: any[] = [
     { number: '5', key: 'one'},
     { number: '4', key: 'two'},
@@ -67,13 +63,10 @@ export class FiltersComponent {
   }));
 
   private syncWithStore = effect(() => {
-    const f = this.uiFilters(); 
-
-    this.store.dispatch(FiltersActions.setSearchTerm({ term: f.searchTerm }));
-    f.categories.forEach(id => this.store.dispatch(FiltersActions.toggleCategory({ id })));
-    f.occasions.forEach(id => this.store.dispatch(FiltersActions.toggleOccasion({ id })));
-  });
-
+  this.store.dispatch(
+    ProductsActions.applyFilters({ filters: this.uiFilters() })
+  );
+});
 
   toggle(set: WritableSignal<Set<string>>, id: string) {
     set.update(s => {
@@ -84,17 +77,30 @@ export class FiltersComponent {
   }
 
 
-
   Search(e: Event) {
   const value = (e.target as HTMLInputElement | null)?.value ?? '';
   this.searchTerm.set(value); 
 }
 
-clearAll() {
-  this.store.dispatch(FiltersActions.clearFilters());  
-  this.selectedCats.set(new Set());
-  this.selectedOccs.set(new Set());
-  this.searchTerm.set('');
+  clearAll() {
+    this.selectedCats.set(new Set());
+    this.selectedOccs.set(new Set());
+    this.searchTerm.set('');
 }
+
+  sales: SalesAndSizes[] = [
+    { name: 'On Sale', key: 'OnSale', availableProducts: '7'},
+    { name: 'In Stock', key: 'InStock', availableProducts: '18'},
+    { name: 'Out Of Stock', key: 'OutOfStock', availableProducts: '9'},
+    { name: 'Discount', key: 'Discount', availableProducts: '13'},
+  ];
+
+  sizes: SalesAndSizes[] = [
+    { name: 'Extra Large', key: 'ExtraLarge'},
+    { name: 'Large', key: 'Large'},
+    { name: 'Medium', key: 'Medium'},
+    { name: 'Small', key: 'Small'},
+    { name: 'Extra Smal', key: 'ExtraSmall'}
+  ];
 
 }

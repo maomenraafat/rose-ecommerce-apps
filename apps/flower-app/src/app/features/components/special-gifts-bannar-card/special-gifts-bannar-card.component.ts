@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SpecialGiftsBannar } from '../../models/staticDataToDisplay';
+import { SpecialGiftsBannar } from '../../interfaces/staticDataToDisplay';
 
 @Component({
   selector: 'app-special-gifts-bannar-card',
