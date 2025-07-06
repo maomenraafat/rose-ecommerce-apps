@@ -1,13 +1,15 @@
-
-
-
-
 <section class="filters flex flex-column md:gap-4 gap-3 font-inter">
+
+    <!------- Start Clear ------->
+    <div class="w-full text-center">
+        <button class="w-12rem rounded-4 border-none text-white cr py-2 bg-red-500 hover:bg-red-600 border-round-xl" (click)="clearAll()">Clear All</button>
+    </div>
+    <!------- End Clear ------->
 
     <!------- Start Search ------->
     <div class="search md:p-4 p-3 border-round-2xl">
         <h4 class="fw-bold m-0 md:mb-6 mb-5">Search</h4>
-        <input type="text" name="search" class="py-2 search-input px-3 border-round-3xl w-full border-none" placeholder="Search By The Name">
+        <input type="text" (input)="Search($event)" [value]="searchTerm()" class="py-2 search-input px-3 border-round-3xl w-full border-none" placeholder="Search By The Name">
     </div>
     <!------- End Search ------->
 
@@ -19,7 +21,9 @@
                 @if (category.productsCount !== 0) {
                     <div class="flex justify-content-between align-items-center">
                         <div class="flex align-items-center min-w-0">
-                            <p-checkbox [inputId]="category._id" name="categories" [value]="category"></p-checkbox>
+                            <p-checkbox [inputId]="category._id" name="categories" [binary]="true" [ngModel]="selectedCats().has(category._id)" 
+                                (onChange)="toggle(selectedCats, category._id)">
+                            </p-checkbox>
                             <label [for]="category._id" class="ml-2 w-full h-full cr white-space-nowrap overflow-hidden text-overflow-ellipsis">
                                 {{ category.name }}
                             </label>
@@ -40,7 +44,9 @@
                 @if (occasion.productsCount !== 0) {
                     <div class="flex justify-content-between align-items-center">
                         <div class="flex align-items-center min-w-0">
-                            <p-checkbox [inputId]="occasion._id" name="brands" [value]="occasion"></p-checkbox>
+                            <p-checkbox [inputId]="occasion._id" name="occasions" [binary]="true" [ngModel]="selectedOccs().has(occasion._id)" 
+                                (onChange)="toggle(selectedOccs, occasion._id)">
+                            </p-checkbox>
                             <label [for]="occasion._id" class="ml-2 w-full h-full cr white-space-nowrap overflow-hidden text-overflow-ellipsis">
                                 {{ occasion.name }}
                             </label>
@@ -58,40 +64,22 @@
         <h4 class="fw-bold m-0 md:mb-5 mb-4">Price Rating</h4>
         <div class="card flex justify-center">
             <div class="w-full">
-                <span class="inline-block color-rate m-2 fw-bold">$0</span>
-                <span class="inline-block color-rate fw-bold">-</span>
                 <span class="inline-block color-rate m-2 fw-bold">${{value}}</span>
+                <span class="inline-block color-rate fw-bold">-</span>
+                <span class="inline-block color-rate m-2 fw-bold">$500</span>
                 <p-slider [(ngModel)]="value" class="w-full mt-3 price-slider"/>
             </div>
         </div>
     </div>
     <!------- End Price Rating ------->
 
-    <!------- Start Sales ------->
-    <div class="sales md:p-4 p-3 border-round-2xl">
-        <h4 class="fw-bold m-0 md:mb-6 mb-5">Sales</h4>
-        <div class="flex flex-column gap-2">
-            @for (sale of sales; track $index) {
-                <div class="flex justify-content-between align-items-center">
-                    <div class="flex align-items-center min-w-0">
-                        <p-checkbox [inputId]="sale.key" name="sales" [value]="sale"></p-checkbox>
-                        <label [for]="sale.key" class="ml-2 cr white-space-nowrap overflow-hidden text-overflow-ellipsis">
-                            {{ sale.name }}
-                        </label>
-                    </div>
-                    <span class="flex-none ml-2">({{ sale.availableProducts }})</span>
-                </div>
-            }
-        </div>
-    </div>
-    <!------- End Sales ------->
-
     <!------- Start Ratings ------->
     <div class="ratings md:p-4 p-3 border-round-2xl">
         <h4 class="fw-bold m-0 md:mb-6 mb-5">Ratings</h4>
         @for (row of rows; track row) {
             <div class="row flex align-items-center md:gap-3 sm:gap-2 gap-1 mb-1">
-                <p-checkbox [inputId]="row.key" name="rows" [value]="row"></p-checkbox>
+                <p-checkbox [inputId]="row.key" [binary]="true" [value]="row">
+                </p-checkbox>
                 @for (star of [1,2,3,4,5]; track star) {
                     <label [for]="row.key">
                         <i class="fa-star color-rate cr"[ngClass]="star <= row.number ? 'fa-solid': 'fa-regular'"></i>
@@ -102,20 +90,5 @@
     </div>
     <!------- End Ratings ------->
 
-    <!------- Start Size ------->
-    <!-- <div class="sizes md:p-4 p-3 border-round-2xl">
-        <h4 class="fw-bold m-0 md:mb-6 mb-5">Sizes</h4>
-        <div class="flex flex-column gap-2">
-            @for (size of sizes; track $index) {
-                <div class="flex align-items-center min-w-0">
-                    <p-checkbox [inputId]="size.key" name="sizes" [value]="size"></p-checkbox>
-                    <label [for]="size.key" class="ml-2 w-fill h-full cr white-space-nowrap  overflow-hidden text-overflow-ellipsis">
-                        {{ size.name }}
-                    </label>
-                </div>
-            }
-        </div>
-    </div> -->
-    <!------- End Size ------->
 
 </section>

@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   // Call Services
   public readonly _themeManager = inject(ThemeManagerService)
   private readonly _categoryService = inject(CategoryService);
-  // private readonly fb = inject(FormBuilder);
+
 
   // Variables
   private readonly destroy$ = new Subject<void>();

@@ -9,7 +9,6 @@ import { ErrorApiData } from '../../shared/interfaces/error-api-data';
   providedIn: 'root',
 })
 export class CategoryAdaptorService {
-  constructor() {}
 
   adaptCategories(data: CategoryApiData): CategoryApiRes {
     return {

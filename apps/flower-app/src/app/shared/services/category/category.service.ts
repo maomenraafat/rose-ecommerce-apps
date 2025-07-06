@@ -3,10 +3,9 @@ import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { CategoryApiData } from '../../interfaces/category-api-data';
 import { environment } from '../../../env/environments';
-
 import { Category } from '../../interfaces/category';
-import { CategoryAdaptorService } from '../../../adaptors/category/category-adaptor.adaptor';
 import { API_EndPoints } from '../../../enums/endPoints';
+import { CategoryAdaptorService } from '../../../adaptors/category/category-adaptor.adaptor';
 
 @Injectable({
   providedIn: 'root',

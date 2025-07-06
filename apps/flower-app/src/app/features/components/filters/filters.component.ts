@@ -1,5 +1,5 @@
 import { catchError, map, of } from 'rxjs';
-import { Component, effect, inject, Signal } from '@angular/core';
+import { Component, computed, effect, inject, signal, Signal, WritableSignal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CheckboxModule } from 'primeng/checkbox';
@@ -9,6 +9,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FiltersOptionsService } from '../../services/FiltersOptions/filters-options.service';
 import { CategoryMini } from '../../interfaces/categoryRes';
 import { OccasionMini } from '../../interfaces/occasionRes';
+import { Store } from '@ngrx/store';
+import { FiltersActions } from '../../../store/filters/filters.actions';
 
 
 @Component({
@@ -20,9 +22,14 @@ import { OccasionMini } from '../../interfaces/occasionRes';
 export class FiltersComponent {
   // Call Services
   private readonly _filtersOptionsService = inject(FiltersOptionsService)
+  private store = inject(Store);
 
   // Variable
-  value: number = 60;
+  value: number = 0;
+  searchTerm = signal('');
+  selectedCats = signal<Set<string>>(new Set());
+  selectedOccs = signal<Set<string>>(new Set());
+  selectedRating = signal<number | null>(null);
 
   readonly categories: Signal<CategoryMini[]> = toSignal(
   this._filtersOptionsService.getAllCategories().pipe(
@@ -40,10 +47,9 @@ export class FiltersComponent {
     { initialValue: []}
   )
 
-  private readonly _log = effect( () => {
+  private readonly log = effect( () => {
     console.log('categories =>> ', this.categories());
     console.log('occasions =>> ', this.occasions());
-    
   })
 
   rows: any[] = [
@@ -54,20 +60,41 @@ export class FiltersComponent {
     { number: '1', key: 'five'},
   ];
 
+  private uiFilters = computed(() => ({
+    categories : Array.from(this.selectedCats()),
+    occasions : Array.from(this.selectedOccs()),
+    searchTerm : this.searchTerm(),
+  }));
 
-  sales: any[] = [
-      { name: 'On Sale', key: 'OnSale', availableProducts: '7'},
-      { name: 'In Stock', key: 'InStock', availableProducts: '18'},
-      { name: 'Out Of Stock', key: 'OutOfStock', availableProducts: '9'},
-      { name: 'Discount', key: 'Discount', availableProducts: '13'},
-  ];
+  private syncWithStore = effect(() => {
+    const f = this.uiFilters(); 
 
-  // sizes: any[] = [
-  //     { name: 'Extra Large', key: 'ExtraLarge'},
-  //     { name: 'Large', key: 'Large'},
-  //     { name: 'Medium', key: 'Medium'},
-  //     { name: 'Small', key: 'Small'},
-  //     { name: 'Extra Smal', key: 'ExtraSmall'}
-  // ];
+    this.store.dispatch(FiltersActions.setSearchTerm({ term: f.searchTerm }));
+    f.categories.forEach(id => this.store.dispatch(FiltersActions.toggleCategory({ id })));
+    f.occasions.forEach(id => this.store.dispatch(FiltersActions.toggleOccasion({ id })));
+  });
+
+
+  toggle(set: WritableSignal<Set<string>>, id: string) {
+    set.update(s => {
+      const copy = new Set(s);
+      copy.has(id) ? copy.delete(id) : copy.add(id);
+      return copy;
+    });
+  }
+
+
+
+  Search(e: Event) {
+  const value = (e.target as HTMLInputElement | null)?.value ?? '';
+  this.searchTerm.set(value); 
+}
+
+clearAll() {
+  this.store.dispatch(FiltersActions.clearFilters());  
+  this.selectedCats.set(new Set());
+  this.selectedOccs.set(new Set());
+  this.searchTerm.set('');
+}
 
 }

@@ -1,6 +1,6 @@
 .filters{
 
-    .search, .categories, .brands, .price-rating, .sales, .ratings, .sizes{
+    .search, .categories, .brands, .price-rating, .ratings{
         box-shadow: 0px 1px 10px 0px #0000000e;
         color: var(--filter-all-text-color);
         background-color: var(--filter-all-sections-bg);
@@ -96,3 +96,5 @@ border-color:var(--features-icon-bg);
         }
     }
 }
+
+
