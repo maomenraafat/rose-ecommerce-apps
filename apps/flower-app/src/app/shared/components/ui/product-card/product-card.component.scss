@@ -2,7 +2,7 @@
 
 .card__item {
   .card__img {
-    background-color: vars.$Remy-color;
+    background-color: var(--features-bg-color);
     margin-bottom: 16px;
     border-radius: 20px;
     position: relative;
@@ -13,7 +13,7 @@
       transition: all 0.5s ease;
     }
     .overlay {
-      background-color: #f82ba9b2;
+      background-color: var(--card-layer);
       position: absolute;
       top: 0;
       left: 0;
@@ -28,8 +28,12 @@
         align-items: center;
         width: 40px;
         height: 40px;
-        background-color: vars.$main-color;
+        // background-color: var(--main-light-color);
+        background-color: white;
         border-radius: 39px;
+        i {
+          color: red;
+        }
       }
     }
     &:hover {
@@ -46,7 +50,7 @@
       font-weight: 600 !important;
     }
     p {
-      color: vars.$text-color;
+      color: var(--all-sections-title-color);
       font-family: vars.$inter-font;
       font-weight: 600;
       margin-bottom: 9px;
@@ -89,13 +93,13 @@
       }
     }
     span {
-      color: #f05454;
+      color: var(--card-price-color);
     }
   }
   .card__icon {
     width: 42px;
     height: 42px;
     color: white;
-    background-color: vars.$Heliotrope-color;
+    background-color: var(--add-card-and-about-bg);
   }
 }
